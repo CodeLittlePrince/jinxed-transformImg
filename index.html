@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>style-animate</title>
+    <style type="text/css">
+      .m-refixBox{
+        position: absolute;
+        z-index: 999;
+        border: 2px dashed #aaa;
+        cursor: move;
+      }
+      .target{
+        position: absolute;
+      }
+      .u-eastSouth{
+        display: inline-block;
+        font-size: 0;
+        position: absolute;
+        right: -10px;
+        bottom: -10px;
+        width: 36px;
+        height: 36px;
+        cursor: se-resize;
+        user-drag: none;
+        -webkit-user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        background-image: url('icon-resize.png');
+      }
+      .img1{
+        top: 50px;
+        left: 50px;
+        width: 300px;
+      }
+      .img2{
+        top: 50px;
+        left: 400px;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- box一开始的大小由图片决定，图片的大小为上传以后，后端返回值来确定 -->
+    <img class="target img1 js-target1" src="bb.png">
+    <img class="target img2 js-target2" src="aa.jpg">
+    <div id="imgResize">
+      <!-- 组件容器 -->
+    </div>
+    <canvas id="canvas">
+      <!-- 容器 -->
+    </canvas>
+    <script type="text/javascript" src="widget.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript">
+      var imgResize = document.getElementById('imgResize');
+      // 初始化组件
+      var transformElementBox = new TransformElementBox();
+      transformElementBox.work({
+        container: imgResize,
+        target: 'js-target1',
+        top: 0,
+        left: 0,
+        center: false,
+        minWidth: 200,
+        maxWidth: 500,
+        canResize: true,
+        canDrag: true
+      });
+      var transformElementBox2 = new TransformElementBox();
+      transformElementBox2.work({
+        container: imgResize,
+        target: 'js-target2',
+        top: 0,
+        left: 0,
+        center: false,
+        minWidth: 200,
+        maxWidth: 400,
+        canResize: true,
+        canDrag: true
+      });
+    </script>
+  </body>
+</html>
